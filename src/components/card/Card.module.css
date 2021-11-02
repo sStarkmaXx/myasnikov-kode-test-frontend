@@ -1,0 +1,54 @@
+.card {
+  display: flex;
+  height: 84px;
+  align-items: center;
+}
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.text {
+  height: 60px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.upLine {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.name {
+  margin-top: 10px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #050510;
+}
+.userTag {
+  padding-left: 4px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #97979b;
+  text-transform: lowercase;
+}
+.department {
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #55555c;
+}

@@ -1,0 +1,55 @@
+.topAppBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 152px;
+  padding: 16px 16px 0px 16px;
+  color: #050510;
+  border-bottom: 1px solid #c3c3c6;
+}
+.title {
+  height: 28px;
+  width: 76px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #050510;
+}
+input {
+  height: 40px;
+  border-radius: 16px;
+  background-color: #f7f7f8;
+  outline: none;
+  border: none;
+}
+.tabs {
+  display: flex;
+  height: 23px;
+}
+.tab {
+  display: flex;
+  height: 20px;
+  padding: 0px 12px 0px 12px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  color: #97979b;
+}
+.activeTab {
+  display: flex;
+  height: 20px;
+  border-bottom: 3px solid #6534ff;
+  padding: 0px 12px 0px 12px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  color: #050510;
+}
