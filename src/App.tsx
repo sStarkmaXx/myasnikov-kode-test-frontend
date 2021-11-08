@@ -3,7 +3,8 @@ import { TopAppBar } from './components/top_app_bar/TopAppBar';
 import { List } from './components/list/List';
 import { AppRootStateType } from './redux/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChangeFilterAC } from './redux/persons-reducer';
+import { ChangeFilterAC, fetchPersonsTC } from './redux/persons-reducer';
+import { useEffect } from 'react';
 
 export type PersonType = {
   id: string;
@@ -17,10 +18,7 @@ export type PersonType = {
   phone: string;
 };
 
-export type PersonsStateType = {
-  persons: Array<PersonType>;
-  filteredPersons: Array<PersonType>;
-};
+export type PersonsStateType = Array<PersonType>;
 
 export type FilterType =
   | 'all'
@@ -41,16 +39,11 @@ function App() {
   const persons = useSelector<AppRootStateType, PersonsStateType>(
     (state) => state.persons
   );
-
-  let filteredPersons = [];
-
-  if (persons.filteredPersons.length === 0) {
-    filteredPersons = persons.persons;
-  } else {
-    filteredPersons = persons.filteredPersons;
-  }
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPersonsTC());
+  }, []);
 
   function filterPersons(filter: FilterType) {
     dispatch(ChangeFilterAC(filter));
@@ -59,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <TopAppBar filterPersons={filterPersons} />
-      <List filteredPersons={filteredPersons} />
+      <List filteredPersons={persons} />
     </div>
   );
 }
