@@ -6,7 +6,7 @@ type TopAppBarPropsType = {
   filterPersons(filter: FilterType): void;
 };
 
-export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
+export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
   const [filter, setFilter] = useState<FilterType>('all');
   return (
     <div className={css.topAppBar}>
@@ -16,7 +16,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'all' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('all');
+            filterPersons('all');
             setFilter('all');
           }}
         >
@@ -25,7 +25,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'android' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('android');
+            filterPersons('android');
             setFilter('android');
           }}
         >
@@ -34,7 +34,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'ios' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('ios');
+            filterPersons('ios');
             setFilter('ios');
           }}
         >
@@ -43,7 +43,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'design' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('design');
+            filterPersons('design');
             setFilter('design');
           }}
         >
@@ -52,7 +52,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'management' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('management');
+            filterPersons('management');
             setFilter('management');
           }}
         >
@@ -61,7 +61,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'qa' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('qa');
+            filterPersons('qa');
             setFilter('qa');
           }}
         >
@@ -70,7 +70,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'back_office' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('back_office');
+            filterPersons('back_office');
             setFilter('back_office');
           }}
         >
@@ -79,7 +79,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'frontend' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('frontend');
+            filterPersons('frontend');
             setFilter('frontend');
           }}
         >
@@ -88,7 +88,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'hr' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('hr');
+            filterPersons('hr');
             setFilter('hr');
           }}
         >
@@ -97,7 +97,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'pr' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('pr');
+            filterPersons('pr');
             setFilter('pr');
           }}
         >
@@ -106,7 +106,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'backend' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('backend');
+            filterPersons('backend');
             setFilter('backend');
           }}
         >
@@ -115,7 +115,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'support' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('support');
+            filterPersons('support');
             setFilter('support');
           }}
         >
@@ -124,7 +124,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = (props) => {
         <div
           className={filter === 'analytics' ? css.activeTab : css.tab}
           onClick={() => {
-            props.filterPersons('analytics');
+            filterPersons('analytics');
             setFilter('analytics');
           }}
         >

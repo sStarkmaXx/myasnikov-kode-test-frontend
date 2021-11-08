@@ -3,7 +3,7 @@ import { TopAppBar } from './components/top_app_bar/TopAppBar';
 import { List } from './components/list/List';
 import { AppRootStateType } from './redux/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChangeFilterAC, fetchPersonsTC } from './redux/persons-reducer';
+import { fetchPersonsTC } from './redux/persons-reducer';
 import { useEffect } from 'react';
 
 export type PersonType = {
@@ -42,11 +42,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPersonsTC());
+    dispatch(fetchPersonsTC('all'));
   }, []);
 
   function filterPersons(filter: FilterType) {
-    dispatch(ChangeFilterAC(filter));
+    dispatch(fetchPersonsTC(filter));
   }
 
   return (

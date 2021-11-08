@@ -6,7 +6,7 @@ const settings = {
   },
   // prefer: {
   //   code: 200,
-  //   example: 'success',
+  //   example: 'error-500',
   // },
 };
 

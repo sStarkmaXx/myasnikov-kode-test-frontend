@@ -3,15 +3,11 @@ import { personsAPI } from '../api/api-persons';
 import { Dispatch } from 'redux';
 
 const initialState: Array<PersonType> = [];
-export type ActionsType = ChangeFilterTypeAC | SetPersonsTypeAC;
+export type ActionsType = ChangeFilterTypeAC;
 
 type ChangeFilterTypeAC = {
   type: 'CHANGE-FILTER';
   filter: FilterType;
-};
-
-type SetPersonsTypeAC = {
-  type: 'SET-PERSONS';
   persons: Array<PersonType>;
 };
 
@@ -20,13 +16,11 @@ export const personsReducer = (
   action: ActionsType
 ): Array<PersonType> => {
   switch (action.type) {
-    case 'SET-PERSONS':
-      return [...action.persons];
     case 'CHANGE-FILTER':
       if (action.filter === 'all') {
-        return state;
+        return action.persons;
       } else {
-        return [...state].filter(
+        return action.persons.filter(
           (person) => person.department === action.filter
         );
       }
@@ -35,25 +29,21 @@ export const personsReducer = (
   }
 };
 
-export const ChangeFilterAC = (filter: FilterType): ChangeFilterTypeAC => {
+export const ChangeFilterAC = (
+  filter: FilterType,
+  persons: Array<PersonType>
+): ChangeFilterTypeAC => {
   return {
     type: 'CHANGE-FILTER',
     filter,
-  };
-};
-
-export const SetPersonsAC = (persons: Array<PersonType>): SetPersonsTypeAC => {
-  return {
-    type: 'SET-PERSONS',
     persons,
   };
 };
 
-export const fetchPersonsTC = () => {
+export const fetchPersonsTC = (filter: FilterType) => {
   return (dispatch: Dispatch) => {
     personsAPI
       .getPersons()
-      .then((res) => dispatch(SetPersonsAC(res.data.items)));
-    debugger;
+      .then((res) => dispatch(ChangeFilterAC(filter, res.data.items)));
   };
 };
