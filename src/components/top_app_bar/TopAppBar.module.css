@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 152px;
+  min-height: 136px;
   padding: 16px 16px 0px 16px;
   color: #050510;
   border-bottom: 1px solid #c3c3c6;
@@ -17,12 +17,49 @@
   line-height: 28px;
   color: #050510;
 }
-input {
+.search {
+  display: flex;
   height: 40px;
+  align-items: center;
+  border-radius: 16px;
+  background-color: #f7f7f8;
+  padding: 0 10px 0 10px;
+}
+input {
+  height: 20px;
   border-radius: 16px;
   background-color: #f7f7f8;
   outline: none;
   border: none;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: #050510;
+  flex-grow: 1;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none;
+}
+input::-moz-placeholder {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: #c3c3c6;
+}
+input::-webkit-input-placeholder {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: #c3c3c6;
 }
 .tabs {
   display: flex;

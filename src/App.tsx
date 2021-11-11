@@ -5,6 +5,7 @@ import { AppRootStateType } from './redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPersonsTC } from './redux/persons-reducer';
 import { useEffect } from 'react';
+import { AppError } from './components/error/NetWorkError';
 
 export type PersonType = {
   id: string;
@@ -39,20 +40,25 @@ function App() {
   const persons = useSelector<AppRootStateType, PersonsStateType>(
     (state) => state.persons
   );
+
+  const error = useSelector<AppRootStateType, string | null>(
+    (state) => state.app.error
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPersonsTC('all'));
+    dispatch(fetchPersonsTC('all', ''));
   }, []);
 
   function filterPersons(filter: FilterType) {
-    dispatch(fetchPersonsTC(filter));
+    dispatch(fetchPersonsTC(filter, ''));
   }
 
   return (
     <div className="App">
       <TopAppBar filterPersons={filterPersons} />
       <List filteredPersons={persons} />
+      {error !== null && <AppError />}
     </div>
   );
 }

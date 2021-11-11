@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { FilterType } from '../../App';
 import css from './TopAppBar.module.css';
+import search from '../../img/search.png';
+import list_ui from '../../img/list-ui-alt.png';
+import { useDispatch } from 'react-redux';
+import { fetchPersonsTC } from '../../redux/persons-reducer';
 
 type TopAppBarPropsType = {
   filterPersons(filter: FilterType): void;
@@ -8,16 +12,31 @@ type TopAppBarPropsType = {
 
 export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
   const [filter, setFilter] = useState<FilterType>('all');
+  const [inputSearch, setInputSearch] = useState<string>('');
+  const dispatch = useDispatch();
   return (
     <div className={css.topAppBar}>
       <div className={css.title}>Поиск</div>
-      <input type="search" />
+      <div className={css.search}>
+        <img src={search} alt="" />
+        <input
+          type="search"
+          placeholder="Введите имя, фамилию, ник"
+          value={inputSearch}
+          onChange={(e) => {
+            setInputSearch(e.target.value);
+            dispatch(fetchPersonsTC(filter, e.target.value));
+          }}
+        />
+        <img src={list_ui} alt="" />
+      </div>
       <div className={css.tabs}>
         <div
           className={filter === 'all' ? css.activeTab : css.tab}
           onClick={() => {
             filterPersons('all');
             setFilter('all');
+            setInputSearch('');
           }}
         >
           Все
@@ -27,6 +46,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('android');
             setFilter('android');
+            setInputSearch('');
           }}
         >
           Android
@@ -36,6 +56,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('ios');
             setFilter('ios');
+            setInputSearch('');
           }}
         >
           IOS
@@ -45,6 +66,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('design');
             setFilter('design');
+            setInputSearch('');
           }}
         >
           Дизайн
@@ -54,6 +76,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('management');
             setFilter('management');
+            setInputSearch('');
           }}
         >
           Менеджмент
@@ -63,6 +86,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('qa');
             setFilter('qa');
+            setInputSearch('');
           }}
         >
           QA
@@ -72,6 +96,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('back_office');
             setFilter('back_office');
+            setInputSearch('');
           }}
         >
           Бэк-офис
@@ -81,6 +106,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('frontend');
             setFilter('frontend');
+            setInputSearch('');
           }}
         >
           Frontend
@@ -90,6 +116,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('hr');
             setFilter('hr');
+            setInputSearch('');
           }}
         >
           HR
@@ -99,6 +126,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('pr');
             setFilter('pr');
+            setInputSearch('');
           }}
         >
           PR
@@ -108,6 +136,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('backend');
             setFilter('backend');
+            setInputSearch('');
           }}
         >
           Backend
@@ -117,6 +146,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('support');
             setFilter('support');
+            setInputSearch('');
           }}
         >
           Техподдержка
@@ -126,6 +156,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
           onClick={() => {
             filterPersons('analytics');
             setFilter('analytics');
+            setInputSearch('');
           }}
         >
           Аналитика
