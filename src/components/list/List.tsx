@@ -9,6 +9,7 @@ import { SearchError } from '../search_error/SearchError';
 
 type ListPropsType = {
   filteredPersons: Array<PersonType>;
+  setPerson: (person: PersonType) => void;
 };
 
 export const List: React.FC<ListPropsType> = (props) => {
@@ -16,7 +17,7 @@ export const List: React.FC<ListPropsType> = (props) => {
     (state) => state.app.status
   );
   let cards = props.filteredPersons.map((card) => {
-    return <Card key={card.id} card={card} />;
+    return <Card key={card.id} card={card} setPerson={props.setPerson} />;
   });
 
   return (

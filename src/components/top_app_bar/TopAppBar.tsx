@@ -5,12 +5,17 @@ import search from '../../img/search.png';
 import list_ui from '../../img/list-ui-alt.png';
 import { useDispatch } from 'react-redux';
 import { fetchPersonsTC } from '../../redux/persons-reducer';
+import { SortWindowType } from '../main_page/MainPage';
 
 type TopAppBarPropsType = {
   filterPersons(filter: FilterType): void;
+  setSortWindow: (isOpen: SortWindowType) => void;
 };
 
-export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
+export const TopAppBar: React.FC<TopAppBarPropsType> = ({
+  filterPersons,
+  setSortWindow,
+}) => {
   const [filter, setFilter] = useState<FilterType>('all');
   const [inputSearch, setInputSearch] = useState<string>('');
   const dispatch = useDispatch();
@@ -28,7 +33,7 @@ export const TopAppBar: React.FC<TopAppBarPropsType> = ({ filterPersons }) => {
             dispatch(fetchPersonsTC(filter, e.target.value));
           }}
         />
-        <img src={list_ui} alt="" />
+        <img src={list_ui} alt="" onClick={() => setSortWindow('open')} />
       </div>
       <div className={css.tabs}>
         <div

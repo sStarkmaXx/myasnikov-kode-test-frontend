@@ -4,13 +4,17 @@ import { Dispatch } from 'redux';
 import { setErrorAC, setStatusAC } from './app-reducer';
 
 const initialState: Array<PersonType> = [];
-export type ActionsType = ChangeFilterTypeAC;
+export type ActionsType = ChangeFilterTypeAC | SortByAlphabetTypeAC;
 
 type ChangeFilterTypeAC = {
   type: 'CHANGE-FILTER';
   filter: FilterType;
   search: string;
   persons: Array<PersonType>;
+};
+
+type SortByAlphabetTypeAC = {
+  type: 'SORT-BY-ALPHABET';
 };
 
 export const personsReducer = (
@@ -58,6 +62,16 @@ export const personsReducer = (
             );
         }
       }
+    case 'SORT-BY-ALPHABET':
+      return [...state].sort(function (a, b) {
+        if (a.firstName < b.firstName) {
+          return -1;
+        }
+        if (a.firstName > b.firstName) {
+          return 1;
+        }
+        return 0;
+      });
     default:
       return state;
   }
@@ -73,6 +87,12 @@ export const ChangeFilterAC = (
     filter,
     search,
     persons,
+  };
+};
+
+export const SortByAlphabetAC = (): SortByAlphabetTypeAC => {
+  return {
+    type: 'SORT-BY-ALPHABET',
   };
 };
 

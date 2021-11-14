@@ -1,11 +1,8 @@
 import './App.css';
-import { TopAppBar } from './components/top_app_bar/TopAppBar';
-import { List } from './components/list/List';
-import { AppRootStateType } from './redux/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPersonsTC } from './redux/persons-reducer';
-import { useEffect } from 'react';
-import { AppError } from './components/error/NetWorkError';
+import { Route, Routes } from 'react-router-dom';
+import { PersonInfo } from './components/person_info/PersonInfo';
+import { MainPage } from './components/main_page/MainPage';
+import { useState } from 'react';
 
 export type PersonType = {
   id: string;
@@ -37,28 +34,23 @@ export type FilterType =
   | 'analytics';
 
 function App() {
-  const persons = useSelector<AppRootStateType, PersonsStateType>(
-    (state) => state.persons
-  );
-
-  const error = useSelector<AppRootStateType, string | null>(
-    (state) => state.app.error
-  );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPersonsTC('all', ''));
-  }, []);
-
-  function filterPersons(filter: FilterType) {
-    dispatch(fetchPersonsTC(filter, ''));
-  }
-
+  const [person, setPerson] = useState<PersonType>({
+    id: '',
+    avatarUrl: '',
+    firstName: '',
+    lastName: '',
+    userTag: '',
+    department: '',
+    position: '',
+    birthday: '',
+    phone: '',
+  });
   return (
     <div className="App">
-      <TopAppBar filterPersons={filterPersons} />
-      <List filteredPersons={persons} />
-      {error !== null && <AppError />}
+      <Routes>
+        <Route path="/" element={<MainPage setPerson={setPerson} />}></Route>
+        <Route path="/info" element={<PersonInfo person={person} />}></Route>
+      </Routes>
     </div>
   );
 }

@@ -1,0 +1,129 @@
+.personInfo {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 280px;
+  background-color: #f7f7f8;
+  align-items: center;
+}
+.btnwrap {
+  display: flex;
+  height: 72px;
+  width: calc(100% - 24px);
+  background-color: #f7f7f8;
+  align-items: center;
+  padding-left: 24px;
+}
+.avatar {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.textwrap {
+  display: flex;
+  height: 104px;
+  justify-content: center;
+  align-items: center;
+}
+.text {
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.upLine {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.name {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #050510;
+}
+.userTag {
+  padding-left: 4px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 26px;
+  color: #97979b;
+  text-transform: lowercase;
+}
+.department {
+  text-transform: capitalize;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #55555c;
+}
+.info {
+  display: flex;
+  width: calc(100%-14px);
+  flex-direction: column;
+  margin-top: 8px;
+  height: 126px;
+  padding: 0px 16px 0px 16px;
+  justify-content: space-between;
+}
+
+.date {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #050510;
+}
+.date > img {
+  height: 20px;
+  width: 20px;
+  margin-right: 14px;
+}
+.birthday {
+  display: flex;
+  flex-grow: 1;
+}
+.separator {
+  height: 1px;
+  background-color: #f7f7f8;
+}
+.number {
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+.number > img {
+  height: 20px;
+  width: 20px;
+  margin-right: 14px;
+}
+a {
+  text-decoration: none;
+  align-items: center;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #050510;
+}

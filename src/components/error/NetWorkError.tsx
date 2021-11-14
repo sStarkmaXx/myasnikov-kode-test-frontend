@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { fetchPersonsTC } from '../../redux/persons-reducer';
 import { setErrorAC } from '../../redux/app-reducer';
 
-export const AppError = () => {
+export const NetWorkError = () => {
   const dispatch = useDispatch();
   return (
     <div className={css.layout}>
