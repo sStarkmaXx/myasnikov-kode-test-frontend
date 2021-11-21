@@ -3,7 +3,10 @@ import cancel from '../../img/cancel_16.png';
 import { useState } from 'react';
 import { SortWindowType } from '../main_page/MainPage';
 import { useDispatch } from 'react-redux';
-import { SortByAlphabetAC } from '../../redux/persons-reducer';
+import {
+  SortByAlphabetAC,
+  SortByBirthdayAC,
+} from '../../redux/persons-reducer';
 
 type SelectType = 'byAlph' | 'byBirth' | 'none';
 
@@ -40,6 +43,11 @@ export const SortWindow: React.FC<SortWindowPropsType> = ({
           <div className={css.line} onClick={() => setSelect('byBirth')}>
             <div
               className={select === 'byBirth' ? css.select : css.check}
+              onClick={() => {
+                setSelect('byBirth');
+                dispatch(SortByBirthdayAC());
+                setSortWindow('close');
+              }}
             ></div>
             По дню рождения
           </div>

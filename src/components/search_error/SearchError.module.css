@@ -9,8 +9,9 @@
 .error {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   height: 118px;
-  width: 343px;
+  max-width: 343px;
   align-items: center;
   justify-content: space-between;
 }

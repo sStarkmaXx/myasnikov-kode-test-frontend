@@ -4,7 +4,10 @@ import { Dispatch } from 'redux';
 import { setErrorAC, setStatusAC } from './app-reducer';
 
 const initialState: Array<PersonType> = [];
-export type ActionsType = ChangeFilterTypeAC | SortByAlphabetTypeAC;
+export type ActionsType =
+  | ChangeFilterTypeAC
+  | SortByAlphabetTypeAC
+  | SortByBirthdayTypeAC;
 
 type ChangeFilterTypeAC = {
   type: 'CHANGE-FILTER';
@@ -15,6 +18,10 @@ type ChangeFilterTypeAC = {
 
 type SortByAlphabetTypeAC = {
   type: 'SORT-BY-ALPHABET';
+};
+
+type SortByBirthdayTypeAC = {
+  type: 'SORT-BY-BIRTHDAY';
 };
 
 export const personsReducer = (
@@ -72,6 +79,29 @@ export const personsReducer = (
         }
         return 0;
       });
+    case 'SORT-BY-BIRTHDAY':
+      let now = new Date();
+      let dateNow = now.getDate();
+      let monthNow = now.getMonth();
+      let sortState = [...state].sort(function (a, b) {
+        return Date.parse(b.birthday) - Date.parse(a.birthday);
+      });
+      let birthdayAfter = sortState.filter(
+        (date) =>
+          new Date(Date.parse(date.birthday)).getMonth() >= monthNow &&
+          new Date(Date.parse(date.birthday)).getDate() >= dateNow
+      );
+      let birthdayBefore = sortState.filter(
+        (date) =>
+          new Date(Date.parse(date.birthday)).getMonth() < monthNow &&
+          new Date(Date.parse(date.birthday)).getDate() < dateNow
+      );
+
+      return birthdayAfter.concat(
+        birthdayBefore.sort(function (a, b) {
+          return Date.parse(b.birthday) - Date.parse(a.birthday);
+        })
+      );
     default:
       return state;
   }
@@ -96,9 +126,14 @@ export const SortByAlphabetAC = (): SortByAlphabetTypeAC => {
   };
 };
 
+export const SortByBirthdayAC = (): SortByBirthdayTypeAC => {
+  return {
+    type: 'SORT-BY-BIRTHDAY',
+  };
+};
+
 export const fetchPersonsTC = (filter: FilterType, search: string) => {
   return (dispatch: Dispatch) => {
-    debugger;
     dispatch(setStatusAC('loading'));
     personsAPI.getPersons().then((res) => {
       if (res.status === 500) {

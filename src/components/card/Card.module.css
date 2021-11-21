@@ -1,5 +1,6 @@
 .card {
   display: flex;
+  width: 100%;
   height: 84px;
   align-items: center;
 }
@@ -54,4 +55,8 @@ a {
   font-size: 13px;
   line-height: 16px;
   color: #55555c;
+}
+.a {
+  display: flex;
+  flex-grow: 1;
 }

@@ -64,6 +64,7 @@ input::-webkit-input-placeholder {
 .tabs {
   display: flex;
   height: 23px;
+  overflow: auto;
 }
 .tab {
   display: flex;
